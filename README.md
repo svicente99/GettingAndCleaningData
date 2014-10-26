@@ -1,4 +1,4 @@
-Getting And Cleaning Data - Course Project
+<h2>Getting And Cleaning Data - Course Project</h2>
 
 Related to "Getting And Cleaning Data", 3rd part of Data Science Specatialization, from Johns Hopkins University. A Coursera training.
 
@@ -17,7 +17,15 @@ The data used in this project was downloaded from:
 
 https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip 
 
-## Step 1: training and test sets merged to create one data set
+## Step 0: Parameter definitions and file checking
+
+First of all, I define a set of parameters that allows reusing this code in several
+situations or renaming its variables and files (names and extensions). 
+
+After, I check if all necessary files to execute the script are available and saved 
+in pointed folders.  
+
+## Step 1: Training and test sets merged to create one data set
 
 In this part we introduce the `<<-` operator which can be used to
 assign a value to an object in an environment that is different from the
