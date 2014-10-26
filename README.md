@@ -101,12 +101,13 @@ of measurements is assembled by "<b>do.call</b>" special function.
 
 <hr>
 
-Source file - R script - gitbub link:
+<h4>
+1. Source file - R script - gitbub link:<br>
 https://github.com/svicente99/GettingAndCleaningData/blob/master/run_analysis.R
 
-Result file - Tidy data (Step 5) - github link:
+2. Result file - Tidy data (Step 5) - github link:<br>
 https://github.com/svicente99/GettingAndCleaningData/blob/master/resultM.txt
-
+</h4>
 
 <h4>Thanks for your attention.<h4>
 ---------
