@@ -104,7 +104,7 @@ of measurements is assembled by "<b>do.call</b>" special function.
 <h4>
 1. Source file - R script - gitbub link:<br>
 https://github.com/svicente99/GettingAndCleaningData/blob/master/run_analysis.R
-
+<br><br>
 2. Result file - Tidy data (Step 5) - github link:<br>
 https://github.com/svicente99/GettingAndCleaningData/blob/master/resultM.txt
 </h4>
