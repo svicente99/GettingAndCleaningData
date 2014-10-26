@@ -160,6 +160,7 @@ for(nmCol in aColNames) {
 	args <- alist(dataSet, c('Subject','Activity'), summarise, mean(get(nmCol)))
 	names(args) <- c("", "", "", nmCol)
 	df1Mean <- do.call("ddply", args)
+	# Ref.: http://stackoverflow.com/questions/18523880/replace-two-dots-in-a-string-with-gsub
 	nmCol <- gsub('\\.\\.\\.', '()-', nmCol)
 	if(i==1)
 		{
@@ -173,5 +174,9 @@ for(nmCol in aColNames) {
 }
 
 #print(dfMeans)
+
+# Control number of decimal digits in write.table output
+# Ref.: http://stackoverflow.com/questions/14260646/how-to-control-number-of-decimal-digits-in-write-table-output
+
 write.table(format(dataSet, digits=15), "result1.txt", sep="\t", row.names=FALSE)
 write.table(format(dfMeans, digits=15), "resultM.txt", sep="\t", row.names=FALSE)
