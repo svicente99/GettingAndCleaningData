@@ -60,7 +60,7 @@ I create an array "<b>aColNames</b>" to set all column names doing a relation wi
 variable names (many and many mean and standard deviation).
 
 ## Step 5: Creating a second, independent tidy data set with the average of each variable 
-           summarized by each activity and each subject
+##         summarized by each activity and each subject
 		   
 The most important (difficult, too!) part of this project ("core") is coded by loop
 showed below:
@@ -95,7 +95,8 @@ and standard deviations measurements, with calculated mean summarized by Subject
 Activity. "<b>ddply</b>" method does this hard work and a dynamic expression (to join a big lot
 of measurements is assembled by "<b>do.call</b>" special function.
 
-Thanks for your attention.
+<hr>
+<h3>Thanks for your attention.<h3>
 ---------
-# Sergio
-# @svicente99		   
+#### Sergio
+##### @svicente99		   
