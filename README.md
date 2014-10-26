@@ -102,11 +102,16 @@ of measurements is assembled by "<b>do.call</b>" special function.
 <hr>
 
 <h4>
+#### Additional material to illustrate my solution:
+
 1. Source file - R script - gitbub link:<br>
 https://github.com/svicente99/GettingAndCleaningData/blob/master/run_analysis.R
 <br><br>
 2. Result file - Tidy data (Step 5) - github link:<br>
 https://github.com/svicente99/GettingAndCleaningData/blob/master/resultM.txt
+<br><br>
+3. File treatment graphical scheme - from Step 1 to 5:<br>
+http://www.supersuporte.com/GettingCleaningData/Course_Project/file_treatment.pdf
 </h4>
 
 <h4>Thanks for your attention.<h4>
