@@ -3,9 +3,11 @@
 ## 
 ##	Getting Cleaning Data - Course Project: solution
 ##
+##  file name.: run_analysis.R
 ##  Student...:	Sergio Vicente (Niteroi, Brazil)
-##  Twitter...: @svicente99 (svicente99@yahoo.com)
+##  Twitter...: svicente99 (svicente99@yahoo.com)
 ##  Date......: Oct.20th 2014
+##  Revision..: Oct.26th 2014
 ## 	----------------------------------------------------------
 
 ## 	Refs.: https://class.coursera.org/getdata-008/human_grading/view/courses/972586/assessments/3/submissions
@@ -13,17 +15,15 @@
 ##	-----------------------------------------------------------
 
 
-##  module parameters
-
 UCI_folder <- "./UCI HAR Dataset"
 EXT <- "txt"
 vFiles <- c("subject", "y", "X")
-vCases <- c("test", "train")
+vCasos <- c("test", "train")
 feat_file <- "features.txt"
 ativ_file <- "activity_labels.txt"
 
 check_data_files <- function() {
-	for(attribute in vCases) {
+	for(attribute in vCasos) {
 		folder <- paste(UCI_folder, attribute, sep='/')
 		for(oneFile in vFiles) {
 			nmFile <- paste(folder,paste(paste(oneFile, attribute, sep="_"), EXT, sep='.'), sep="/")
@@ -85,8 +85,10 @@ merge_data <- function() {
 	df2 <- read_data("train")
 	colnames(df2) <- c("set", "Subject", "Activity", vFeatures[1:nFeatures])
 ##	use to debug
-#	print(df1); print(dim(df1))
-#	print(df2); print(dim(df2))
+#	print(df1)
+#	print(dim(df1))
+#	print(df2)
+#	print(dim(df2))
 	print("*************************************************")
 	oneData <- merge(df1, df2, all=TRUE)
 #	print(oneData)
@@ -113,14 +115,16 @@ cut_mean_stdDev <- function(df) {
 describe_ativs <- function(df) {
 	lstAtivs <- readLines(paste(UCI_folder, ativ_file, sep="/"))
 	nAtivs <- length(lstAtivs)
-	# Ref.: http://r.789695.n4.nabble.com/replace-values-in-data-frame-td803416.html
-	# df$Activity <- replace(df$Activity, c(1:nAtivs), lstAtivs)
+	# Ref.: ....
+	for( ativ in lstAtivs) {
+		n <- as.numeric(substr(ativ, 1, 2))
+		df$Activity[df$Activity==n] <- sprintf("%-20s",ativ)
+	}
 	return(df)
 }
 
 ## -------------------------------------------------------------
-## MAIN CODE	
-## -------------------------------------------------------------
+
 
 ## 	Step 1) Merges the training and the test sets to create one data set
 	dataSet <- merge_data()
@@ -133,7 +137,7 @@ describe_ativs <- function(df) {
 library(plyr)
 
 # Ref.: http://www.cookbook-r.com/Manipulating_data/Summarizing_data/
-#
+# example of code to initial test...
 
 #dfMeans <- ddply(dataSet, c("Subject", "Activity"),
 #                 summarise, 
@@ -141,31 +145,33 @@ library(plyr)
 #                 mean2=mean(X2.tBodyAcc.mean...Y)) 
 #print(dfMeans)
 
-##	Step 4) Appropriately labels the data set with descriptive variable names. 
-	aCols <- colnames(dataSet)
-	aColNames <- aCols[4:length(aCols)]
+##	--------------------------------------------------------------
+##	Steps 4 and 5) Label data set with variable names and
+##  create another dataframe, independent and tidy with the 
+##  average of each variable
+##	--------------------------------------------------------------
 
-##  with the average of each variable for each activity and each subject = dfMeans
-##	Step 5) From the data set in step 4, creates a second, independent tidy data set 
-
+aCols <- colnames(dataSet)
+aColNames <- aCols[4:length(aCols)]
 i <- 0 
 dfMeans <- data.frame()
 for(nmCol in aColNames) {
 	i <- i+1
-	#Ref.: http://stackoverflow.com/questions/15270482/string-to-variable-name-in-r (get)
 	args <- alist(dataSet, c('Subject','Activity'), summarise, mean(get(nmCol)))
-	#Ref.: http://stackoverflow.com/questions/16454943/how-can-i-assign-a-variables-value-to-column-name-in-plyr
 	names(args) <- c("", "", "", nmCol)
 	df1Mean <- do.call("ddply", args)
+	nmCol <- gsub('\\.\\.\\.', '()-', nmCol)
 	if(i==1)
+		{
 		dfMeans <- df1Mean
+		colnames(dfMeans)[3] <- nmCol
+		}
 	else{
 		dfMeans <- cbind(dfMeans, df1Mean[,3])
-		#Ref.: http://stackoverflow.com/questions/7531868/how-to-rename-a-single-column-in-a-data-frame-in-r
 		colnames(dfMeans)[i+2] <- nmCol
 		}
 }
 
 #print(dfMeans)
-write.table(dataSet, "result1.txt", row.names=FALSE)
-write.table(dfMeans, "resultM.txt", row.names=FALSE)
+write.table(format(dataSet, digits=15), "result1.txt", sep="\t", row.names=FALSE)
+write.table(format(dfMeans, digits=15), "resultM.txt", sep="\t", row.names=FALSE)
