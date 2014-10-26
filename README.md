@@ -2,6 +2,10 @@
 
 Related to "Getting And Cleaning Data", 3rd part of Data Science Specatialization, from Johns Hopkins University. A Coursera training.
 
+### CODE_BOOK
+
+<a href="http://www.supersuporte.com/GettingCleaningData/Course_Project/CODE_BOOK.pdf" target="_blank">PDF file can be downloaded by this link here</a>.
+
 ### Introduction
 
 This project was intended to demonstrate ability to collect, work with, 
@@ -96,7 +100,7 @@ Activity. "<b>ddply</b>" method does this hard work and a dynamic expression (to
 of measurements is assembled by "<b>do.call</b>" special function.
 
 <hr>
-<h3>Thanks for your attention.<h3>
+<h4>Thanks for your attention.<h4>
 ---------
 #### Sergio
 ##### @svicente99		   
