@@ -4,7 +4,7 @@ Related to "Getting And Cleaning Data", 3rd part of Data Science Specatializatio
 
 ### CODE_BOOK
 
-<a style='font-size::14pt;color:red' href="http://www.supersuporte.com/GettingCleaningData/Course_Project/CODE_BOOK.pdf" target="_blank">PDF file can be downloaded by this link here</a>.
+####<a style='font-size::14pt;color:red' href="http://www.supersuporte.com/GettingCleaningData/Course_Project/CODE_BOOK.pdf" target="_blank">PDF file can be downloaded by this link here</a>.
 
 ### Introduction
 
@@ -100,6 +100,14 @@ Activity. "<b>ddply</b>" method does this hard work and a dynamic expression (to
 of measurements is assembled by "<b>do.call</b>" special function.
 
 <hr>
+
+Source file - R script - gitbub link:
+https://github.com/svicente99/GettingAndCleaningData/blob/master/run_analysis.R
+
+Result file - Tidy data (Step 5) - github link:
+https://github.com/svicente99/GettingAndCleaningData/blob/master/resultM.txt
+
+
 <h4>Thanks for your attention.<h4>
 ---------
 #### Sergio
