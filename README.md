@@ -80,11 +80,14 @@ showed below:
 		#Ref.: http://stackoverflow.com/questions/16454943/how-can-i-assign-a-variables-value-to-column-name-in-plyr
 		names(args) <- c("", "", "", nmCol)
 		df1Mean <- do.call("ddply", args)
+		nmCol <- gsub('\\.\\.\\.', '()-', nmCol)
 		if(i==1)
+			{
 			dfMeans <- df1Mean
+			colnames(dfMeans)[3] <- nmCol
+			}
 		else{
 			dfMeans <- cbind(dfMeans, df1Mean[,3])
-			#Ref.: http://stackoverflow.com/questions/7531868/how-to-rename-a-single-column-in-a-data-frame-in-r
 			colnames(dfMeans)[i+2] <- nmCol
 			}
 	}
@@ -99,11 +102,13 @@ and standard deviations measurements, with calculated mean summarized by Subject
 Activity. "<b>ddply</b>" method does this hard work and a dynamic expression (to join a big lot
 of measurements is assembled by "<b>do.call</b>" special function.
 
+Finally, two dataframes are saved on local folders:
+	<li>result1.txt (all data merged from raw data)</li>
+	<li>resultM.txt (solution data, with average to each measurement with mean and std.dev.</li>
 <hr>
 
-<h4>
 #### Additional material to illustrate my solution:
-
+<h4>
 1. Source file - R script - gitbub link:<br>
 https://github.com/svicente99/GettingAndCleaningData/blob/master/run_analysis.R
 <br><br>
